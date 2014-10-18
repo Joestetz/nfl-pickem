@@ -7,10 +7,6 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 /**
  * App-wide Styles
  */
-
-img.brand-logo {
-  margin-top: -10px;
-}
  
 .browsehappy {
     margin: 0.2em 0;
@@ -19,9 +15,28 @@ img.brand-logo {
     padding: 0.2em 0;
 }
 
+html {
+	overflow-y: scroll;
+}
+
+body {
+	font-size: 16px;
+	
+	.navbar-text {
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+}
+
+img.brand-logo {
+  margin-top: -10px;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
+@import 'mypicks/mypicks.scss';
+@import 'standings/standings.scss';
 // endinjector

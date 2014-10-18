@@ -6,6 +6,18 @@ angular.module('nflPickemApp')
     if($cookieStore.get('token')) {
       currentUser = User.get();
     }
+    
+    var roleMask = {
+      guest: 1,
+      user: 2,
+      admin: 4
+    };
+    
+    var permissionMask = {
+      guest: 1,
+      user: 3,
+      admin: 7
+    };
 
     return {
 
@@ -134,6 +146,23 @@ angular.module('nflPickemApp')
        */
       isAdmin: function() {
         return currentUser.role === 'admin';
+      },
+      
+      /**
+       * Gets current user's role
+       *
+       * @return {String}
+       */
+      hasPermission: function(role) {
+        var roleAsInt = roleMask[role];
+        if (!roleAsInt) return false;
+        
+        var permissionedRole = currentUser.role;
+        if (roleAsInt == 1 && !currentUser.hasOwnProperty('role')) {
+          permissionedRole = 'guest';
+        }
+        
+        return permissionMask[permissionedRole] & roleAsInt;
       },
 
       /**
