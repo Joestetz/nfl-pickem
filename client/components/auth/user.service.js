@@ -2,7 +2,7 @@
 
 angular.module('nflPickemApp')
   .factory('User', function ($resource) {
-    return $resource('/api/users/:id/:controller', {
+    return $resource('/api/pickemusers/:id/:controller', {
       id: '@_id'
     },
     {

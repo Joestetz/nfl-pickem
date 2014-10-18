@@ -28,17 +28,20 @@ angular.module('nflPickemApp', [
         return config;
       },
 
-      // Intercept 401s and redirect you to login
       responseError: function(response) {
+        // Intercept 401s and redirect you to login
         if(response.status === 401) {
           $location.path('/login');
           // remove any stale tokens
           $cookieStore.remove('token');
           return $q.reject(response);
         }
-        else {
+        // Intercept 403s and redirect you to homepage
+        if(response.status === 403) {
+          $location.path('/');
           return $q.reject(response);
         }
+        return $q.reject(response);
       }
     };
   })

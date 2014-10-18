@@ -6,7 +6,7 @@
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
-var User = require('../api/user/user.model');
+var User = require('../api/pickemuser/pickemuser.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -39,9 +39,9 @@ User.find({}).remove(function() {
   }, {
     provider: 'local',
     role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
+    name: 'Joestetz',
+    email: 'joestetz@gmail.com',
+    password: 'ZAQ!2wsx'
   }, function() {
       console.log('finished populating users');
     }
