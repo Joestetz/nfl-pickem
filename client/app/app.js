@@ -36,12 +36,6 @@ angular.module('nflPickemApp', [
           $cookieStore.remove('token');
           return $q.reject(response);
         }
-        // Intercept 403s and redirect you to homepage
-        if(response.status === 403) {
-          $location.path('/');
-          return $q.reject(response);
-        }
-        return $q.reject(response);
       }
     };
   })
