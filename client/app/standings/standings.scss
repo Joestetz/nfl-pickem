@@ -1,0 +1,8 @@
+.table-striped > thead > tr > th.sortedby,
+.table-striped > tbody > tr > td.sortedby {
+  background-color: #F1F1F1;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td.sortedby {
+  background-color: #E7E7E7;
+}

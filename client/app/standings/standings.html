@@ -3,7 +3,26 @@
 <div class="container" id="standings">
   <div class="row">
     <div class="col-lg-12">
-      Standings
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th ng-class="{sortedby: predicate == 'place'}"><a href="" ng-click="sortBy('place')">Place</a></th>
+            <th ng-class="{sortedby: predicate == 'name'}"><a href="" ng-click="sortBy('name')">Player</a></th>
+            <th ng-class="{sortedby: predicate == 'scores[' + $index + ']'}" ng-repeat="week in weeks track by $index">
+              <a href="" ng-click="sortBy('scores[' + $index + ']')">Wk{{ $index + 1 }}</a>
+            </th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="player in players | orderBy:predicate:reverse">
+            <td ng-class="{sortedby: predicate == 'place'}" ng-bind="player.place"></td>
+            <td ng-class="{sortedby: predicate == 'name'}" ng-bind="player.name"></td>
+            <td ng-class="{sortedby: predicate == 'scores[' + $index + ']'}" class="text-center" ng-repeat="week in weeks track by $index" ng-bind="formatScore(player.scores[$index])"></td>
+            <td class="text-center" ng-bind="getTotalScore(player)"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
